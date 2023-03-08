@@ -1,4 +1,4 @@
-import { Box, styled, Text } from '@ignite-ui/react'
+import { Box, keyframes, styled, Text } from '@ignite-ui/react'
 
 export const Container = styled(Box, {
   margin: '$6 auto 0',
@@ -24,6 +24,15 @@ export const Container = styled(Box, {
   },
 })
 
+const openTimer = keyframes({
+  '0%': {
+    opacity: 0,
+  },
+  '100%': {
+    opacity: 1,
+  },
+})
+
 export const TimePicker = styled('div', {
   borderLeft: '1px solid $gray600',
   padding: '$6 $4 0',
@@ -34,6 +43,8 @@ export const TimePicker = styled('div', {
   bottom: 0,
   right: 0,
   width: 280,
+
+  animation: `${openTimer} 0.5s ease-out forwards`,
 })
 
 export const TimePickerHeader = styled(Text, {
