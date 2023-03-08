@@ -22,3 +22,8 @@ export const ConnectItem = styled('div', {
     alignItems: 'center',
   },
 })
+
+export const AuthError = styled(Text, {
+  color: '$red600',
+  marginBottom: '$4',
+})

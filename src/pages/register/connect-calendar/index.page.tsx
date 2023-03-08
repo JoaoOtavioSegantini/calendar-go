@@ -1,10 +1,27 @@
 import { Button, Heading, MultiStep, Text } from '@ignite-ui/react'
-import { ArrowRight, Calendar } from 'phosphor-react'
+import { ArrowRight, Check } from 'phosphor-react'
 import { Container, Header } from '../styles'
-import { ConnectBox, ConnectItem } from './styles'
+import { AuthError, ConnectBox, ConnectItem } from './styles'
+import { signIn, useSession } from 'next-auth/react'
 
-export default function Register() {
-  // async function handleRegister(data: registerFormData) {}
+import CalendarSVG from '@/assets/calendar.svg'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
+
+export default function ConnectCalendar() {
+  const session = useSession()
+  const router = useRouter()
+
+  const hasAuthError = !!router.query.error
+  const isSignedIn = session.status === 'authenticated'
+
+  async function handleConnectCalendar() {
+    await signIn('google')
+  }
+
+  async function handleNavigateToNextStep() {
+    await router.push('/register/time-intervals')
+  }
 
   return (
     <Container>
@@ -19,19 +36,38 @@ export default function Register() {
       <ConnectBox>
         <ConnectItem>
           <Text size="sm">
-            <Calendar
-              weight="fill"
-              width={16}
-              height={16}
-              style={{ marginRight: 8 }}
-            />{' '}
+            <Image
+              src={CalendarSVG}
+              alt=""
+              width={18}
+              style={{ marginRight: 10 }}
+            />
             Google Calendar
           </Text>
-          <Button variant="secondary">
-            Connect <ArrowRight />
-          </Button>
+          {isSignedIn ? (
+            <Button size="sm" disabled>
+              Connected
+              <Check />
+            </Button>
+          ) : (
+            <Button onClick={handleConnectCalendar} variant="secondary">
+              Connect <ArrowRight />
+            </Button>
+          )}
         </ConnectItem>
-        <Button type="submit">
+
+        {hasAuthError && (
+          <AuthError size="sm">
+            Falha ao conectar com o Google Calendar. Tente novamente e verifique
+            se você ativou as permissões necessárias.
+          </AuthError>
+        )}
+
+        <Button
+          onClick={handleNavigateToNextStep}
+          type="submit"
+          disabled={!isSignedIn}
+        >
           Next Step
           <ArrowRight />
         </Button>
