@@ -20,9 +20,9 @@ export const Header = styled('div', {
 })
 
 export const Form = styled(Box, {
-  marginTop: '$6',
   display: 'flex',
   flexDirection: 'column',
+  margin: '$6 $6 0',
   gap: '$4',
 
   label: {

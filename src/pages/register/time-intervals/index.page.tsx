@@ -110,10 +110,9 @@ export default function TimeIntervals() {
   return (
     <Container>
       <Header>
-        <Heading as="strong">Quase lá </Heading>
+        <Heading as="strong">Almost there</Heading>
         <Text>
-          Agora, escolha os horários que você está disponível em cada dia da
-          semana.
+          Now, choose the times you are available each day of the week.
         </Text>
 
         <MultiStep size={4} currentStep={3} />

@@ -10,16 +10,18 @@ export default function Home() {
   return (
     <>
       <NextSeo
-        title="Agendamento descomplicado"
-        description="Conecte seu calendário e permita que seus clientes agendem no seu tempo livre."
+        title="CalendarGo | Hassle-free scheduling "
+        description="Connect your calendar and let your customers book in their spare
+            time."
       />
 
       <Container>
         <Hero>
-          <Heading size="4xl">Agendamento descomplicado</Heading>
+          <Text size="sm">Welcome to Calendar Go!</Text>
+          <Heading size="4xl">Hassle-free scheduling</Heading>
           <Text size="xl">
-            Conecte seu calendário e permita que seus clientes agendem no seu
-            tempo livre.
+            Connect your calendar and let your customers book in their spare
+            time.
           </Text>
 
           <ClaimUsernameForm />

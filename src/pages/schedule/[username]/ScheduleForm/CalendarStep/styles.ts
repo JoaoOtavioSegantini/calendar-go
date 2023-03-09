@@ -45,6 +45,13 @@ export const TimePicker = styled('div', {
   width: 280,
 
   animation: `${openTimer} 0.5s ease-out forwards`,
+
+  '@media (max-width: 900px)': {
+    position: 'relative',
+    width: '100%',
+    borderLeft: 'none',
+    borderTop: '1px solid $gray600',
+  },
 })
 
 export const TimePickerHeader = styled(Text, {
